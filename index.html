@@ -14,39 +14,90 @@
     <div id='div1'>
         <h1>WELCOME TO PIZZA PARADISO</h1>
     </div>
-    <div class="container">
-        <h1>MAKE YOUR ORDER</h1>
-         <div class="row">
-          <div class="col-md-6">
-            <h2>Create your own pizza:</h2>
-            <form id="new-pizza">
-              <div class="form-group">
-                <label for="new-size">SIZE</label>
-                <input type="text" class="form-control" id="new-size">
-              </div>
-              <div class="form-group">
-                <label for="new-crust">CRUST</label>
-                <input type="text" class="form-control" id="new-crust">
-              </div>
-              <div class="form-group">
-                <label for="new-toppings">TOPPINGS</label>
-                <input type="text" class="form-control" id="new-toppings">
-              </div>
-              <div class="form-group">
-                <label for="new-number">HOW MANY ORDERS OF THIS PIZZA DO YOU WANT?</label>
-                <input type="text" class="form-control" id="new-number">
-              </div>
-  
-              <button type="submit" class="btn">DONE</button>
+    <div class="container" id="div2">     
+            <form id="order">
+                <h2>Create your own pizza:</h2>
+                <div class="form-group">
+                    <label for="new-size">SIZE</label>
+                    <input type="text" class="form-control" id="new-size">
+                </div>
+                <div class="form-group">
+                    <label for="new-crust">CRUST</label>
+                    <input type="text" class="form-control" id="new-crust">
+                </div>
+                <div class="form-group">
+                    <label for="new-toppings">TOPPINGS</label>
+                    <input type="text" class="form-control" id="new-toppings">
+                </div>
+                <div class="form-group">
+                    <label for="new-number">HOW MANY ORDERS OF THIS PIZZA DO YOU WANT?</label>
+                    <input type="text" class="form-control" id="new-number">
+                </div>
+                <br>
+                <div class="btn-box">
+                    <button type="text" id="next1">NEXT</button>
+                </div>
             </form>
-  
-            <h2>YOUR BASKET:</h2>
+            <form id="contact">
+                <h2>CONTACT:</h2>
+                  <div class="form-group">
+                    <label for="new-name">Name</label>
+                    <input type="text" class="form-control" id="new-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="new-email">Email</label>
+                    <input type="email" class="form-control" id="new-email">
+                  </div>
+                  <div class="form-group">
+                    <label for="new-pnone-number">Phone Number</label>
+                    <input type="number" class="form-control" id="new-phone-number">
+                  </div>
+                  <div class="form-group">
+                    <label for="new-delivery">DO YOU WANT YOUR PIZZA DELIVERED TO YOU?</label>
+                    <input type="text" class="form-control" id="new-delivery">
+                  </div>
+                  <br>
+                  <div class="btn-box">
+                      <button type="button" id="back1">BACK</button>
+                    <button type="button" id="next2">NEXT</button>
+                  </div>
+            </form>
+            <form id="location" onsubmit="getInput()">
+                <h2>DELIVERY DETAILS:</h2>
+                    <div class="form-group">
+                    <label for="new-county">COUNTY</label>
+                    <input type="text" class="form-control" id="new-county">
+                    </div>
+                    <div class="form-group">
+                    <label for="new-sub-county">SUB-COUNTY</label>
+                    <input type="text" class="form-control" id="new-sub-county">
+                    </div>
+                    <div class="form-group">
+                    <label for="new-street">STREET</label>
+                    <input type="text" class="form-control" id="new-street">
+                    </div>
+                    <div class="form-group">
+                    <label for="new-house">HOUSE/FLAT ADDRESS</label>
+                    <input type="text" class="form-control" id="new-house">
+                    </div>
+                    <br>
+                    <div class="btn-box">
+                        <button type="button" id="back2">BACK</button>
+                    <button type="submit" id="next3">SUBMIT</button>
+                    </div>
+            </form>
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col">Step 1</div>
+                <div class="step-col">Step 2</div>
+                <div class="step-col">Step 3</div>
+            </div>
+            
+      </div>
+      <h2>YOUR BASKET:</h2>
             <ul id="cart">
   
             </ul>
-          </div>
-        </div>
-      </div>
     
     
 
