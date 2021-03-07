@@ -89,10 +89,17 @@ function deliveryFee(){
     console.log(charge)
     return charge;
 }
+function extraPizzaCost(){
+    var extraAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas());
+        console.log("Your total amount payable is " + extraAmount +"." )
 
-//total cost function using prototype
+        console.log(extraAmount)
+        return extraAmount;
+
+}
+
 PizzaOrder.prototype.totalCost=function(){
-        var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee());
+        var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee()+extraPizzaCost());
         alert("Your total amount payable is " + totalAmount +"." )
 
         console.log(totalAmount)
@@ -117,13 +124,13 @@ $(document).ready(function(){
 
     var progress= document.getElementById('progress');
 
-    // var selectedToppings = [];
-    //   for (var option of document.getElementById('toppings').options) {
-    //     if (option.selected) {
-    //       selected=.push(option.value);
-    //     }
-    //   }
-  //alert(selected);
+//     var selectedToppings = ;
+//       for (var option of document.getElementById('toppings').options) {
+//         if (option.selected) {
+//           selected=.push(option.value);
+//         }
+//       }
+//  alert(selected);
 
     next1.onclick = function(){
         orderForm.style.left="-600px"
@@ -133,10 +140,14 @@ $(document).ready(function(){
     moreOrders.onclick = function(){
         var inputtedSize=  size.options[size.selectedIndex].value;
         var inputtedCrust = crust.options[crust.selectedIndex].value;
-        var inputtedToppings =$("input#new-toppings").val();  //*how to get this values */
+        var inputtedToppings =$("input#new-toppings").val();  //*how to get this values printed to user */
         var inputtedNumber =parseInt($("input#new-number").val());
+
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
+
         $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"</span></li>");
+
+         extraPizzaCost();
 
         document.getElementById("order").reset();
     }
