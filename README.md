@@ -5,7 +5,7 @@
 #
 ## HERES A PREVIEW OF WHAT THE APPLICATION LOOKS LIKE 
 
-[Click here ]()
+[Click here](https://irene-mukii.github.io/pizza-paradiso/)
 
 
 #
@@ -16,18 +16,19 @@ Make your order from anywhere and sit back for an alert when its ready, or have 
 #
 
 ## Setup/Installation Requirements
-* 
-* 
-* 
+* This website requires that you have data access to internet data.
 #
 ## Behavior Driven Development
 This is how I broke down the problem statement to come up with this Amazing Application:
 
-* The project would primarrily need user input. Therefore I began with HTML forms.
-* 
-* 
-* 
-* 
+* Create HTML forms as primary step.
+* For business logic: Use constructors to store input data.
+* Use innerHTML to output the order to user for tracking.
+* Create a function that gives the total cost for just one pizza.
+* Calculate the delivery fee as part of total cost.
+* Add option for ni delivery.
+* Calculate total cost if user inputs two pizzas with different properties.
+* create a  loop to calculate as many pizza entries as user requires
 
 #
 ## Technologies Used
