@@ -28,7 +28,6 @@ body{
     transition: 0.5s;
 }
 form input{
-    width: 100%;
     padding: 10px 5px;
     margin: 5px 0;
     border: 0;
@@ -36,7 +35,6 @@ form input{
     outline: none;
     background: transparent;
 }
-
 .btn-box{
     width: 100%;
     margin: 10px auto;
@@ -44,6 +42,9 @@ form input{
 }
 .btn-box h6{
     color: black;
+}
+#back1{
+    margin: 20px auto;
 }
 form button{
     width: 110px;
