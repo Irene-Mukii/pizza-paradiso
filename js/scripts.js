@@ -2,10 +2,11 @@
 function PizzaOrder(size,crust,toppings,number){
     this.size =size;
     this.crust = crust;
-    this.toppings = toppings;
+    this.toppings = [];
     this.number = number;
     this.otherOrders=[];
     this.address=[];
+    this.customerDetails=[];
 }
 function OtherOrders(size,crust,toppings,number){
     this.size =size;
@@ -18,7 +19,7 @@ function CustomerDetails(name,cell, email){
     this.phoneNumber=cell;
     this.email=email;
 }
-function CustomerAddress(sucounty,street,house){
+function CustomerAddress(subcounty,street,house){
     this.subcounty=subcounty;
     this.street=street;
     this,house=house;
@@ -53,26 +54,49 @@ function addChicken() {
 function getSizeCost() {
     var selectedSize=size.options[size.selectedIndex].value;
     var sizeAmount;
-    if(selectedSize==='small'){ return sizeAmount = 600;}
-    if (selectedSize==='medium'){ return sizeAmount = 800;}
-    if(selectedSize==='large'){return sizeAmount=1000}
+    if(selectedSize==='small'){ sizeAmount = 600;}
+    if (selectedSize==='medium'){sizeAmount = 800;}
+    if(selectedSize==='large'){sizeAmount=1000}
     console.log(sizeAmount);
+    return sizeAmount;
 }
 function getCrustCost() {
     var selectedCrust=crust.options[crust.selectedIndex].value;
     var crustAmount;
-    if(selectedCrust==='stuffed'){ return crustAmount = 200;}
-    if (selectedCrust==='crispy'){ return crustAmount = 200;}
-    if(selectedCrust==='gluten free'){return crustAmount=300;}
+    if(selectedCrust==='stuffed'){ crustAmount = 200;}
+    if (selectedCrust==='crispy'){ crustAmount = 200;}
+    if(selectedCrust==='gluten free'){crustAmount=300;}
     console.log(crustAmount)
+    return crustAmount;
+}
+function getNumberOfPizzas(){
+    var number =parseInt($("input#new-number").val());
+    console.log(number)
+    return number;
+}
+function deliveryFee(){
+    var charge;
+    var subcounty = document.getElementById('new-sub-county').value;
+    var street = document.getElementById('new-street').value;
+    var houseNum = document.getElementById('new-house').value;
+
+    if(subcounty===''&& street===''&& houseNum===''){
+        charge=0;
+    }else {
+        charge=180;
+    }
+    console.log(subcounty,street,houseNum)
+    console.log(charge)
+    return charge;
 }
 
 //total cost function using prototype
 PizzaOrder.prototype.totalCost=function(){
-        var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken)*(this.number);
+        var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee());
         alert("Your total amount payable is " + totalAmount +"." )
 
         console.log(totalAmount)
+        return totalAmount;
           //total will be picked from otherOder array as well
 } 
 
@@ -92,6 +116,14 @@ $(document).ready(function(){
     var deliveryOrder = document.getElementById('order-done');
 
     var progress= document.getElementById('progress');
+
+    // var selectedToppings = [];
+    //   for (var option of document.getElementById('toppings').options) {
+    //     if (option.selected) {
+    //       selected=.push(option.value);
+    //     }
+    //   }
+  //alert(selected);
 
     next1.onclick = function(){
         orderForm.style.left="-600px"
@@ -166,10 +198,17 @@ $(document).ready(function(){
         var inputtedCell= $("input#new-email").val();
         var inputtedEmail= $("input#new-phone-number").val();
 
+        var inputtedSubCounty=$("input#new-sub-county").val();
+        var inputtedStreet=$("input#new-street").val();
+        var inputtedHouse=$("input#new-house").val();
+
         var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
         console.log(newPizzaOrder);
         let customerDetails= new CustomerDetails(inputtedName,inputtedCell,inputtedEmail);
-        console.log(newPizzaOrder.address.push(customerDetails));
+        console.log(newPizzaOrder.customerDetails.push(customerDetails));
+
+        let customerAddress= new CustomerAddress(inputtedSubCounty,inputtedStreet, inputtedHouse);
+        console.log(newPizzaOrder.address.push(customerAddress));
 
     //use . push to get address and other orders
         $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
