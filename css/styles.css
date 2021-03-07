@@ -39,8 +39,11 @@ form input{
 
 .btn-box{
     width: 100%;
-    margin: 30px auto;
+    margin: 10px auto;
     text-align: center;
+}
+.btn-box h6{
+    color: black;
 }
 form button{
     width: 110px;

@@ -13,34 +13,48 @@
 <body>
     <div id='div1'>
         <h1>WELCOME TO PIZZA PARADISO</h1>
+        <!--nav bar, offers,cart icon -->
     </div>
     <div class="container" id="div2">     
             <form id="order">
                 <h2>Create your own pizza:</h2>
                 <div class="form-group">
-                    <label for="new-size">SIZE</label>
-                    <input type="text" class="form-control" id="new-size">
+                    <label for="size">SELECT PIZZA SIZE</label>
+                    <br>
+                   <select name="size" id="size" >
+                    <option value="1000">LARGE @1000</option>
+                    <option value="800">MEDIUM @800</option>
+                    <option value="600">SMALL @600</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="new-crust">CRUST</label>
-                    <input type="text" class="form-control" id="new-crust">
+                    <label for="crust">CRUST</label>
+                    <br>
+                    <select name="crust" id="crust">
+                    <option value="300">GLUTEN FREE @300</option>
+                    <option value="200">CRISPY @200</option>
+                    <option value="200">STUFFED @200</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="new-toppings">TOPPINGS</label>
+                    <!-- use checkbox instead-->
                     <input type="text" class="form-control" id="new-toppings">
                 </div>
                 <div class="form-group">
                     <label for="new-number">HOW MANY ORDERS OF THIS PIZZA DO YOU WANT?</label>
-                    <input type="text" class="form-control" id="new-number">
+                    <input type="number" class="form-control" id="new-number">
                 </div>
                 <br>
                 <div class="btn-box">
-                    <button type="text" id="next1">NEXT</button>
+                    <h6>DO YOU WANT TO ORDER MORE PIZZAS</h6>
+                    <button type="button" id="more-orders">YES</button>
+                    <button type="button" id="next1">CHECKOUT</button>
                 </div>
             </form>
             <form id="contact">
                 <h2>CONTACT:</h2>
-                  <div class="form-group">
+                  <div class="form-group" >
                     <label for="new-name">Name</label>
                     <input type="text" class="form-control" id="new-name">
                   </div>
@@ -50,24 +64,22 @@
                   </div>
                   <div class="form-group">
                     <label for="new-pnone-number">Phone Number</label>
-                    <input type="number" class="form-control" id="new-phone-number">
+                    <input type="text" class="form-control" id="new-phone-number">
                   </div>
                   <div class="form-group">
                     <label for="new-delivery">DO YOU WANT YOUR PIZZA DELIVERED TO YOU?</label>
                     <input type="text" class="form-control" id="new-delivery">
                   </div>
-                  <br>
                   <div class="btn-box">
-                      <button type="button" id="back1">BACK</button>
-                    <button type="button" id="next2">NEXT</button>
+                    <h6>HOW DO YOU WISH TO GET YOUR PIZZA</h6>
+                    <button type="button" id='pick-up'>PICK-UP</button>
+                    <button type="button" id="next2">DELIVERY</button>
+                    <br>
+                    <button type="button" id="back1">BACK</button>
                   </div>
             </form>
-            <form id="location" onsubmit="getInput()">
+            <form id="location" >
                 <h2>DELIVERY DETAILS:</h2>
-                    <div class="form-group">
-                    <label for="new-county">COUNTY</label>
-                    <input type="text" class="form-control" id="new-county">
-                    </div>
                     <div class="form-group">
                     <label for="new-sub-county">SUB-COUNTY</label>
                     <input type="text" class="form-control" id="new-sub-county">
@@ -83,7 +95,7 @@
                     <br>
                     <div class="btn-box">
                         <button type="button" id="back2">BACK</button>
-                    <button type="submit" id="next3">SUBMIT</button>
+                    <button type="button" id="order-done">SUBMIT</button>
                     </div>
             </form>
             <div class="step-row">
