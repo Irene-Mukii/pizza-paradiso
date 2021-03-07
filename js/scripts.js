@@ -109,7 +109,7 @@ function extraPizzaCost(){
 //cart trial
 function updateCartTotal(){
     var cartItemContainer = document.getElementsByClassName('cart-items')[0];
-    var cartRows = cartItemContainer.getElementsByClassName('cart-row') //error1-cant read undefined class
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row') //error1-cant read undefined
     for (var i=0; i<cartRows.length; i++){
         var cartRow=cartRows[i];
         var priceElement = cartRow.getElementsByClassName('cart-price')[0];
@@ -124,7 +124,7 @@ function updateCartTotal(){
 }
 
 PizzaOrder.prototype.totalCost=function(){
-        var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee()+extraPizzaCost());
+        var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee());
         alert("Your total amount payable is " + totalAmount +"." )
 
         console.log(totalAmount)
@@ -171,7 +171,7 @@ $(document).ready(function(){
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
         $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"</span></li>");
-    
+
          extraPizzaCost();
 
         document.getElementById("order").reset();

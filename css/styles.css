@@ -97,3 +97,13 @@ progress::after{
     top: 0;
     border-left: 20px solid #ffad06;
 }
+.topnav{
+    margin: 20px ;
+    padding: 20px;
+    background-color: rgb(187, 72, 30);
+}
+.topnav a{
+    margin: 20px;
+    padding: 20px;
+    color: white;
+}
