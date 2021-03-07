@@ -1,5 +1,5 @@
 # PIZZA PARADISO WEB APPLICATION
-#### Welcome to Delani Studio. We are here for all your design needs!
+#### Welcome to PIZZA PARADISO ~ Dine like a King to your own liking!
 ### 
 #### By [**IRENE MUKII**](https://github.com/Irene-Mukii)
 #

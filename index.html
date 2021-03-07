@@ -19,7 +19,7 @@
             <form id="order">
                 <h2>Create your own pizza:</h2>
                 <div class="form-group">
-                    <label for="size">SELECT PIZZA SIZE</label>
+                    <label for="size"><strong>SELECT PIZZA SIZE</strong></label>
                     <br>
                    <select name="size" id="size" >
                     <option value="large">LARGE @1000</option>
@@ -28,7 +28,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="crust">CRUST</label>
+                    <label for="crust"><strong> CRUST</strong></label>
                     <br>
                     <select name="crust" id="crust">
                     <option value="gluten free">GLUTEN FREE @300</option>
@@ -37,14 +37,15 @@
                     </select>
                 </div>
                 <div class="form-group" id="toppingd">
-                    <label for="new-toppings">TOPPINGS</label>
+                    <label for="new-toppings"> <strong>TOPPINGS</strong></label>
                     <br>
                     <input type="checkbox" id="cheese" name="cheese" value="Cheese">
-                    <label for="cheese"> Cheese</label>
+                    <label for="cheese"> Cheese @ 50</label><br>
                     <input type="checkbox" id="bbq" name="bbq" value="BBQ Sauce">
-                    <label for="bbq"> BBQ Sauce</label>
-                    <input type="checkbox" id="chicken" name="chicken" value="Chicken">
-                    <label for="chicken"> Chicken</label><br>
+                    <label for="bbq"> BBQ Sauce @50</label><br>
+                    <input type="checkbox" id="chicken" name="chicken" value="Chicken">  
+                    <label for="chicken"> Chicken @100</label><br>
+                    <p> <strong> Medium: +50/= <br>Large:+100/=</strong></p>
                 </div>
                 <div class="form-group">
                     <label for="new-number">HOW MANY ORDERS OF THIS PIZZA DO YOU WANT?</label>
@@ -54,7 +55,7 @@
                 <div class="btn-box">
                     <h6>DO YOU WANT TO ORDER MORE PIZZAS</h6>
                     <button type="button" id="more-orders">YES</button>
-                    <button type="button" id="next1">CHECKOUT</button>
+                    <button type="button" id="next1">NO</button>
                 </div>
             </form>
             <form id="contact">
@@ -96,7 +97,7 @@
                     <br>
                     <div class="btn-box">
                         <button type="button" id="back2">BACK</button>
-                    <button type="button" id="order-done">SUBMIT</button>
+                    <button type="button" id="order-done">CHECKOUT</button>
                     </div>
             </form>
             <div class="step-row">
@@ -107,11 +108,42 @@
             </div>
             
       </div>
-      <h2>YOUR BASKET:</h2>
-            <ul id="cart">
-  
-            </ul>
-    
+        <section class=" content-section">
+            <h2 class="section-header">YOUR BASKET:</h2>
+                    <ul id="cart">
+        
+                    </ul>
+                    <div class="cart-row">
+                        <div class='cart-item cart-column'>
+                            <span class="cart-item-title">PIZZA</span>
+                        </div>
+                        <span class="cart-price cart column">ksh</span>
+                        <div class="cart-quantity cart-column">
+                            <input type='number' class="cart-quantity input" value="1">
+                            <button class="btn btn-danger" type="button">REMOVE</button>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class='cart-item cart-column'>
+                            <span class="cart-item-title">PIZZA</span>
+                        </div>
+                        <span class="cart-price cart column">ksh</span>
+                        <div class="cart-quantity cart-column">
+                            <input type='number' class="cart-quantity input" value="1">
+                            <button class="btn btn-danger" type="button">REMOVE</button>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class='cart-item cart-column'>
+                            <span class="cart-item-title">PIZZA</span>
+                        </div>
+                        <span class="cart-price cart column">ksh</span>
+                        <div class="cart-quantity cart-column">
+                            <input type='number' class="cart-quantity input" value="1">
+                            <button class="btn btn-danger" type="button">REMOVE</button>
+                        </div>
+                    </div>
+        </section>
     
 
     

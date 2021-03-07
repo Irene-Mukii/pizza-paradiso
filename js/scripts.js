@@ -106,6 +106,22 @@ function extraPizzaCost(){
         return extraAmount;
 
 }
+//cart trial
+function updateCartTotal(){
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0];
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row') //error1-cant read undefined class
+    for (var i=0; i<cartRows.length; i++){
+        var cartRow=cartRows[i];
+        var priceElement = cartRow.getElementsByClassName('cart-price')[0];
+        var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0];
+        console.log(priceElement,quantityElement)
+        button.addEventListener('click', function(event){
+              var buttonClicked= event.target;
+              buttonClicked.parentElement.parentElement.remove();
+        })
+    }
+
+}
 
 PizzaOrder.prototype.totalCost=function(){
         var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee()+extraPizzaCost());
@@ -155,7 +171,7 @@ $(document).ready(function(){
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
         $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"</span></li>");
-
+    
          extraPizzaCost();
 
         document.getElementById("order").reset();
@@ -245,4 +261,13 @@ $(document).ready(function(){
         progress.style.width="150px";
         deliveryForm.style.left="600px";
       };
+      var removeOrder = document.getElementsByClassName('btn-danger')
+      for (var i=0; i<removeOrder.length; i++){
+          var button=removeOrder[i];
+          button.addEventListener('click', function(event){
+                var buttonClicked= event.target;
+                buttonClicked.parentElement.parentElement.remove();
+                updateCartTotal();
+          })
+      }
 });
