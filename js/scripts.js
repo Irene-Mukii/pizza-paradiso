@@ -26,27 +26,36 @@ function CustomerAddress(subcounty,street,house){
 }
 function addCheese() {
     var cheeseAmount = 0;
+    var selectedSize=size.options[size.selectedIndex].value;
     var addCheese = document.getElementById("cheese");
     if (addCheese.checked === true) {
-        cheeseAmount = 110;
+        cheeseAmount = 50;
+        if(selectedSize==='medium'){ cheeseAmount += 50;}
+        if (selectedSize==='large'){cheeseAmount += 100;}
     }
     console.log(cheeseAmount);
     return parseInt(cheeseAmount);
 }
 function addBbq() {
     var bbqAmount = 0;
+    var selectedSize=size.options[size.selectedIndex].value;
     var addBbq = document.getElementById("bbq");
     if (addBbq.checked === true) {
-        bbqAmount = 110;
+        bbqAmount = 50;
+        if(selectedSize==='medium'){ bbqAmount += 50;}
+        if (selectedSize==='large'){bbqAmount += 100;}
     }
     console.log(bbqAmount);
     return parseInt(bbqAmount);
 }
 function addChicken() {
     var chickenAmount = 0;
+    var selectedSize=size.options[size.selectedIndex].value;
     var addChicken = document.getElementById("chicken");
     if (addChicken.checked === true) {
-        chickenAmount = 110;
+        chickenAmount = 100;
+        if(selectedSize==='medium'){ chickenAmount += 50;}
+        if (selectedSize==='large'){chickenAmount += 100;}
     }
     console.log(chickenAmount);
     return parseInt(chickenAmount);
@@ -223,7 +232,7 @@ $(document).ready(function(){
 
     //use . push to get address and other orders
         $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
-        alert(`Hello ${customerDetails.name} your order has been received. YOur pizza will be delivered within the hour`)
+        alert(`Hello ${customerDetails.name} your order has been received.The delivery charge will be 180. Your pizza will be delivered to your location within the hour`)
 
         newPizzaOrder.totalCost();
 
