@@ -148,12 +148,18 @@ $(document).ready(function(){
     moreOrders.onclick = function(){
         var inputtedSize=  size.options[size.selectedIndex].value;
         var inputtedCrust = crust.options[crust.selectedIndex].value;
-        var inputtedToppings =$("input#new-toppings").val();  //*how to get this values printed to user */
+
+        var inputtedToppings =[]  //*how to get this values printed to user $("input#new-toppings").val(); */
+        $.each($("input[name='new-toppings']:checked"), function(){
+            inputtedToppings.push($(this).val())
+        })
+        console.log(inputtedToppings)
+
         var inputtedNumber =parseInt($("input#new-number").val());
 
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
-        $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust. "+"</span></li>");
+        $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as topping "+"</span></li>");
 
          extraPizzaCost();
 
