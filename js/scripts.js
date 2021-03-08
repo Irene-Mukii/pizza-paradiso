@@ -106,23 +106,6 @@ function extraPizzaCost(){
         return extraAmount;
 
 }
-//cart trial
-function updateCartTotal(){
-    var cartItemContainer = document.getElementsByClassName('cart-items')[0];
-    var cartRows = cartItemContainer.getElementsByClassName('cart-row') //error1-cant read undefined
-    for (var i=0; i<cartRows.length; i++){
-        var cartRow=cartRows[i];
-        var priceElement = cartRow.getElementsByClassName('cart-price')[0];
-        var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0];
-        console.log(priceElement,quantityElement)
-        button.addEventListener('click', function(event){
-              var buttonClicked= event.target;
-              buttonClicked.parentElement.parentElement.remove();
-        })
-    }
-
-}
-
 PizzaOrder.prototype.totalCost=function(){
         var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee());
         alert("Your total amount payable is " + totalAmount +"." )
@@ -149,6 +132,7 @@ $(document).ready(function(){
 
     var progress= document.getElementById('progress');
 
+
 //     var selectedToppings = ;
 //       for (var option of document.getElementById('toppings').options) {
 //         if (option.selected) {
@@ -156,7 +140,6 @@ $(document).ready(function(){
 //         }
 //       }
 //  alert(selected);
-
     next1.onclick = function(){
         orderForm.style.left="-600px"
         contactForm.style.left="40px";
@@ -170,7 +153,7 @@ $(document).ready(function(){
 
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
-        $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"</span></li>");
+        $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust. "+"</span></li>");
 
          extraPizzaCost();
 
@@ -195,8 +178,8 @@ $(document).ready(function(){
     }
 
     nonDeliveryOrder.onclick = function(){
-        var inputtedSize= $("input#new-size").val();
-        var inputtedCrust = $("input#new-crust").val();
+        var inputtedSize=  size.options[size.selectedIndex].value;
+        var inputtedCrust = crust.options[crust.selectedIndex].value;
         var inputtedToppings =$("input#new-toppings").val();
         var inputtedNumber =parseInt($("input#new-number").val());
 
@@ -210,7 +193,7 @@ $(document).ready(function(){
         console.log(newPizzaOrder.address.push(customerDetails));
         //console.log(PizzaOrder.otherOrders.push(newPizza))
     
-        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
+        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust. "+"<br>"+"ALL DONE"+"</span></li>");
         alert(`Hello ${customerDetails.name} your order has been received. We will call you once it is ready.`)
 
         newPizzaOrder.totalCost();
@@ -225,8 +208,8 @@ $(document).ready(function(){
     }
 
     deliveryOrder.onclick = function () {
-        var inputtedSize= $("input#new-size").val();
-        var inputtedCrust = $("input#new-crust").val();
+        var inputtedSize=  size.options[size.selectedIndex].value;
+        var inputtedCrust = crust.options[crust.selectedIndex].value;
         var inputtedToppings =$("input#new-toppings").val();
         var inputtedNumber =parseInt($("input#new-number").val());
 
@@ -247,7 +230,7 @@ $(document).ready(function(){
         console.log(newPizzaOrder.address.push(customerAddress));
 
     //use . push to get address and other orders
-        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+newPizzaOrder.toppings+ " as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
+        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust. "+"<br>"+"ALL DONE"+"</span></li>");
         alert(`Hello ${customerDetails.name} your order has been received.The delivery charge will be 180. Your pizza will be delivered to your location within the hour`)
 
         newPizzaOrder.totalCost();
