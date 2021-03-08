@@ -230,6 +230,8 @@ $(document).ready(function(){
         orderForm.style.left="40px";
         contactForm.style.left="600px";
         progress.style.width="150px";
+
+        setTimeout(function(){location.reload(); }, 1000);
     }
 
     deliveryOrder.onclick = function () {
@@ -275,5 +277,7 @@ $(document).ready(function(){
         contactForm.style.left="600px";
         progress.style.width="150px";
         deliveryForm.style.left="600px";
+
+        setTimeout(function(){location.reload(); }, 1000);
       };
 });
