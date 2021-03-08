@@ -127,36 +127,38 @@ $(document).ready(function(){
     var back1 = document.getElementById('back1');
     var back2 = document.getElementById('back2');
 
+    var inputtedSize=  size.options[size.selectedIndex].value;
+    var inputtedCrust = crust.options[crust.selectedIndex].value;
+
+    var inputtedToppings =[]  
+    
+    console.log(inputtedToppings)
+
+    var inputtedNumber =parseInt($("input#new-number").val());
+
+    
+    var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
+
+
+    var inputtedName= $("input#new-name").val();
+    var inputtedCell= $("input#new-email").val();
+    var inputtedEmail= $("input#new-phone-number").val();   
+
     var nonDeliveryOrder = document.getElementById('pick-up');
     var deliveryOrder = document.getElementById('order-done');
 
     var progress= document.getElementById('progress');
 
-
-//     var selectedToppings = ;
-//       for (var option of document.getElementById('toppings').options) {
-//         if (option.selected) {
-//           selected=.push(option.value);
-//         }
-//       }
-//  alert(selected);
     next1.onclick = function(){
         orderForm.style.left="-600px"
         contactForm.style.left="40px";
         progress.style.width="300px";
     }
     moreOrders.onclick = function(){
-        var inputtedSize=  size.options[size.selectedIndex].value;
-        var inputtedCrust = crust.options[crust.selectedIndex].value;
-
-        var inputtedToppings =[]  //*how to get this values printed to user $("input#new-toppings").val(); */
         $.each($("input[name='new-toppings']:checked"), function(){
             inputtedToppings.push($(this).val())
         })
         console.log(inputtedToppings)
-
-        var inputtedNumber =parseInt($("input#new-number").val());
-
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
         $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as topping "+"</span></li>");
@@ -175,7 +177,6 @@ $(document).ready(function(){
         contactForm.style.left="-600px";
         deliveryForm.style.left="40px";
         progress.style.width="450px";
-//alert?
     }
     back2.onclick = function(){
         contactForm.style.left="40px";
@@ -183,23 +184,17 @@ $(document).ready(function(){
         progress.style.width="300px";
     }
 
-    nonDeliveryOrder.onclick = function(){
-        var inputtedSize=  size.options[size.selectedIndex].value;
-        var inputtedCrust = crust.options[crust.selectedIndex].value;
-        var inputtedToppings =$("input#new-toppings").val();
-        var inputtedNumber =parseInt($("input#new-number").val());
+    nonDeliveryOrder.onclick = function(){ 
+        $.each($("input[name='new-toppings']:checked"), function(){
+            inputtedToppings.push($(this).val())
+        })
 
-        var inputtedName= $("input#new-name").val();
-        var inputtedCell= $("input#new-email").val();
-        var inputtedEmail= $("input#new-phone-number").val();    
-
-        var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
         console.log(newPizzaOrder);
         let customerDetails= new CustomerDetails(inputtedName,inputtedCell,inputtedEmail);
         console.log(newPizzaOrder.address.push(customerDetails));
         //console.log(PizzaOrder.otherOrders.push(newPizza))
     
-        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust. "+"<br>"+"ALL DONE"+"</span></li>");
+        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
         alert(`Hello ${customerDetails.name} your order has been received. We will call you once it is ready.`)
 
         newPizzaOrder.totalCost();
@@ -214,20 +209,14 @@ $(document).ready(function(){
     }
 
     deliveryOrder.onclick = function () {
-        var inputtedSize=  size.options[size.selectedIndex].value;
-        var inputtedCrust = crust.options[crust.selectedIndex].value;
-        var inputtedToppings =$("input#new-toppings").val();
-        var inputtedNumber =parseInt($("input#new-number").val());
-
-        var inputtedName= $("input#new-name").val();
-        var inputtedCell= $("input#new-email").val();
-        var inputtedEmail= $("input#new-phone-number").val();
+        $.each($("input[name='new-toppings']:checked"), function(){
+            inputtedToppings.push($(this).val())
+        })
 
         var inputtedSubCounty=$("input#new-sub-county").val();
         var inputtedStreet=$("input#new-street").val();
         var inputtedHouse=$("input#new-house").val();
 
-        var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
         console.log(newPizzaOrder);
         let customerDetails= new CustomerDetails(inputtedName,inputtedCell,inputtedEmail);
         console.log(newPizzaOrder.customerDetails.push(customerDetails));
@@ -236,7 +225,7 @@ $(document).ready(function(){
         console.log(newPizzaOrder.address.push(customerAddress));
 
     //use . push to get address and other orders
-        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust. "+"<br>"+"ALL DONE"+"</span></li>");
+        $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
         alert(`Hello ${customerDetails.name} your order has been received.The delivery charge will be 180. Your pizza will be delivered to your location within the hour`)
 
         newPizzaOrder.totalCost();
@@ -250,13 +239,4 @@ $(document).ready(function(){
         progress.style.width="150px";
         deliveryForm.style.left="600px";
       };
-      var removeOrder = document.getElementsByClassName('btn-danger')
-      for (var i=0; i<removeOrder.length; i++){
-          var button=removeOrder[i];
-          button.addEventListener('click', function(event){
-                var buttonClicked= event.target;
-                buttonClicked.parentElement.parentElement.remove();
-                updateCartTotal();
-          })
-      }
 });
