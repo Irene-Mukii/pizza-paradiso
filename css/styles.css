@@ -1,7 +1,7 @@
 body{
     color: white;
     text-align: center;
-    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url('/home/rennie_quin/Documents/moringa-school-projects/pizza-paradiso/images/pizza-pic1.png');
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url('../images/pizza-pic1.png');
     background-position: center;
     background-size: cover;
 }
