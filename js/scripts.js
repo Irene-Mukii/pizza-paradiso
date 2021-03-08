@@ -137,9 +137,6 @@ $(document).ready(function(){
 
     var inputtedNumber =parseInt($("input#new-number").val());
 
-    
-    var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
-
 
     var inputtedName= $("input#new-name").val();
     var inputtedCell= $("input#new-email").val();
@@ -200,6 +197,7 @@ $(document).ready(function(){
 
     nonDeliveryOrder.onclick = function(){ 
         inputtedNumber =parseInt($("input#new-number").val());
+        var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
         $.each($("input[name='new-toppings']:checked"), function(){
             inputtedToppings.push($(this).val())
         })
@@ -208,6 +206,7 @@ $(document).ready(function(){
         pizzaOrderPrices.push(newPizzaOrder.pizzaCost())
 
         console.log(newPizzaOrder);
+        var inputtedName= $("input#new-name").val();
         let customerDetails= new CustomerDetails(inputtedName,inputtedCell,inputtedEmail);
         console.log(newPizzaOrder.address.push(customerDetails));
         console.log(pizzaOrders)
@@ -235,6 +234,7 @@ $(document).ready(function(){
 
     deliveryOrder.onclick = function () {
         inputtedNumber =parseInt($("input#new-number").val());
+        var newPizzaOrder = new PizzaOrder(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
         $.each($("input[name='new-toppings']:checked"), function(){
             inputtedToppings.push($(this).val())
         })
@@ -249,6 +249,7 @@ $(document).ready(function(){
         var inputtedHouse=$("input#new-house").val();
 
         console.log(newPizzaOrder);
+        var inputtedName= $("input#new-name").val();
         let customerDetails= new CustomerDetails(inputtedName,inputtedCell,inputtedEmail);
         console.log(newPizzaOrder.customerDetails.push(customerDetails));
 
