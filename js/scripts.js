@@ -106,14 +106,15 @@ function extraPizzaCost(){
         return extraAmount;
 
 }
-PizzaOrder.prototype.totalCost=function(){
+PizzaOrder.prototype.pizzaCost=function(){
         var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee());
-        alert("Your total amount payable is " + totalAmount +"." )
+        console.log("Your total amount payable is " + totalAmount +"." )
 
         console.log(totalAmount)
         return totalAmount;
           //total will be picked from otherOder array as well
 } 
+
 
 //user-interface
 $(document).ready(function(){
@@ -149,6 +150,9 @@ $(document).ready(function(){
 
     var progress= document.getElementById('progress');
 
+    let pizzaOrders =[];
+    var pizzaOrderPrices =[];
+
     next1.onclick = function(){
         orderForm.style.left="-600px"
         contactForm.style.left="40px";
@@ -161,10 +165,19 @@ $(document).ready(function(){
         console.log(inputtedToppings)
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
+        pizzaOrders.push(newPizzaOrder)
+        pizzaOrderPrices.push(extraPizzaCost())
+
+
+        console.log(pizzaOrders)
+        console.log(pizzaOrderPrices)
+        
+
         $("ul#cart").append("<li><span class='order'>"+"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as topping "+"</span></li>");
 
          extraPizzaCost();
 
+        inputtedToppings.splice(0,inputtedToppings.length)
         document.getElementById("order").reset();
     }
     back1.onclick = function(){
@@ -189,15 +202,25 @@ $(document).ready(function(){
             inputtedToppings.push($(this).val())
         })
 
+        pizzaOrders.push(newPizzaOrder)
+        pizzaOrderPrices.push(newPizzaOrder.pizzaCost())
+
         console.log(newPizzaOrder);
         let customerDetails= new CustomerDetails(inputtedName,inputtedCell,inputtedEmail);
         console.log(newPizzaOrder.address.push(customerDetails));
+        console.log(pizzaOrders)
+        console.log(pizzaOrderPrices)
         //console.log(PizzaOrder.otherOrders.push(newPizza))
     
         $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
         alert(`Hello ${customerDetails.name} your order has been received. We will call you once it is ready.`)
 
-        newPizzaOrder.totalCost();
+        var totalCost = pizzaOrderPrices.reduce((a,b)=>a+b,0);
+        alert("Your total amount payable is " + totalCost +"." )
+
+        pizzaOrders.splice(0, pizzaOrders.length) 
+        pizzaOrderPrices.splice(0, pizzaOrderPrices.length) 
+        inputtedToppings.splice(0,inputtedToppings.length)
 
         document.getElementById("order").reset();
         document.getElementById("contact").reset();
@@ -213,6 +236,11 @@ $(document).ready(function(){
             inputtedToppings.push($(this).val())
         })
 
+        pizzaOrders.push(newPizzaOrder)
+        pizzaOrderPrices.push(newPizzaOrder.pizzaCost())
+        console.log(pizzaOrders)
+        console.log(pizzaOrderPrices)
+
         var inputtedSubCounty=$("input#new-sub-county").val();
         var inputtedStreet=$("input#new-street").val();
         var inputtedHouse=$("input#new-house").val();
@@ -227,8 +255,13 @@ $(document).ready(function(){
     //use . push to get address and other orders
         $("ul#cart").append("<li><span class='order'>" +"<br>"+newPizzaOrder.number +" "+ newPizzaOrder.size+ " Paradiso Pizza on a "+newPizzaOrder.crust+" crust with "+inputtedToppings+" as toppings. "+"<br>"+"ALL DONE"+"</span></li>");
         alert(`Hello ${customerDetails.name} your order has been received.The delivery charge will be 180. Your pizza will be delivered to your location within the hour`)
+        
+        var totalCost = pizzaOrderPrices.reduce((a,b)=>a+b,0);
+        alert("Your total amount payable is " + totalCost +"." )
 
-        newPizzaOrder.totalCost();
+        pizzaOrders.splice(0, pizzaOrders.length) 
+        pizzaOrderPrices.splice(0, pizzaOrderPrices.length) 
+        inputtedToppings.splice(0,inputtedToppings.length)
 
         document.getElementById("order").reset();
         document.getElementById("contact").reset();
