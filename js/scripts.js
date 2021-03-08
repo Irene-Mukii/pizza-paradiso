@@ -159,6 +159,7 @@ $(document).ready(function(){
         progress.style.width="300px";
     }
     moreOrders.onclick = function(){
+        inputtedNumber =parseInt($("input#new-number").val());
         $.each($("input[name='new-toppings']:checked"), function(){
             inputtedToppings.push($(this).val())
         })
@@ -198,6 +199,7 @@ $(document).ready(function(){
     }
 
     nonDeliveryOrder.onclick = function(){ 
+        inputtedNumber =parseInt($("input#new-number").val());
         $.each($("input[name='new-toppings']:checked"), function(){
             inputtedToppings.push($(this).val())
         })
@@ -232,6 +234,7 @@ $(document).ready(function(){
     }
 
     deliveryOrder.onclick = function () {
+        inputtedNumber =parseInt($("input#new-number").val());
         $.each($("input[name='new-toppings']:checked"), function(){
             inputtedToppings.push($(this).val())
         })
