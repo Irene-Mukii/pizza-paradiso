@@ -106,6 +106,31 @@ function extraPizzaCost(){
         return extraAmount;
 
 }
+function validate(){
+    var inputtedSize=  size.options[size.selectedIndex].value;
+    var inputtedCrust = crust.options[crust.selectedIndex].value;
+    var inputtedToppings =$("input#new-toppings").val();  //*how to get this values printed to user */
+    var inputtedNumber =parseInt($("input#new-number").val());
+
+    if ((inputtedSize == "")) {
+        alert("Please select pizza size");
+        setTimeout(function(){location.reload(); }, 6000);
+        return false;
+
+    } else if ((inputtedCrust == "")) {
+        alert("Please select pizza crust");
+        setTimeout(function(){location.reload(); }, 6000);
+        return false;
+
+    } else if ((inputtedToppings == "[]")) {
+        alert("Please select pizza topping");
+        setTimeout(function(){location.reload(); }, 6000);
+        return false;
+    }else if (inputtedNumber === 0|| inputtedNumber < 0 || inputtedNumber === ''){ //not functional yet
+        setTimeout(function(){location.reload(); }, 6000);
+        alert("Please select number of pizzas, can not be less than 1")
+    }
+}
 PizzaOrder.prototype.pizzaCost=function(){
         var totalAmount = (getSizeCost()+getCrustCost()+addBbq()+addCheese()+addChicken())*(getNumberOfPizzas())+(deliveryFee());
         console.log("Your total amount payable is " + totalAmount +"." )
@@ -163,6 +188,8 @@ $(document).ready(function(){
         console.log(inputtedToppings)
         var newPizzaOrder = new OtherOrders(inputtedSize, inputtedCrust, inputtedToppings,inputtedNumber);
 
+        validate()
+
         pizzaOrders.push(newPizzaOrder)
         pizzaOrderPrices.push(extraPizzaCost())
 
@@ -204,6 +231,8 @@ $(document).ready(function(){
 
         pizzaOrders.push(newPizzaOrder)
         pizzaOrderPrices.push(newPizzaOrder.pizzaCost())
+
+        validate()
 
         console.log(newPizzaOrder);
         var inputtedName= $("input#new-name").val();
@@ -249,6 +278,8 @@ $(document).ready(function(){
         var inputtedSubCounty=$("input#new-sub-county").val();
         var inputtedStreet=$("input#new-street").val();
         var inputtedHouse=$("input#new-house").val();
+
+        validate()
 
         console.log(newPizzaOrder);
         var inputtedName= $("input#new-name").val();
