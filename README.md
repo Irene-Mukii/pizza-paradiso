@@ -1,7 +1,7 @@
 # PIZZA PARADISO WEB APPLICATION
 #### Welcome to PIZZA PARADISO ~ Dine like a King to your own liking!
 ### 
-#### By [**IRENE MUKII**](https://github.com/Irene-Mukii)
+#### By - IRENE MUKII, JIMMY GIVANS, JOSH, GORGY.
 #
 ## HERES A PREVIEW OF WHAT THE APPLICATION LOOKS LIKE 
 
@@ -19,7 +19,7 @@ Make your order from anywhere and sit back for an alert when its ready, or have 
 * This website requires that you have data access to internet data.
 #
 ## Behavior Driven Development
-This is how I broke down the problem statement to come up with this Amazing Application:
+This is how We broke down the problem statement to come up with this Amazing Application:
 
 * Create HTML forms as primary step.
 * For business logic: Use constructors to store input data.
