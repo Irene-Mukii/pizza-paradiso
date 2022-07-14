@@ -25,7 +25,7 @@ function CustomerAddress(subcounty,street,house){
     this,house=house;
 }
 function addCheese() {
-    let cheeseAmount = 0;
+    var cheeseAmount = 0;
     var selectedSize=size.options[size.selectedIndex].value;
     var addCheese = document.getElementById("cheese");
     if (addCheese.checked === true) {
