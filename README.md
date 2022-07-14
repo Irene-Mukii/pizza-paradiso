@@ -13,7 +13,7 @@ JIMMY GIVANS - SCM211-0266/2017
 
 #
 ## Description
-No need to stand in line anymore. Enjoy your pizza without the hassle! 
+No need to stand in line anymore. Enjoy your pizza without the hustle! 
 Make your order from anywhere and sit back for an alert when its ready, or have it brought to your door step!
 
 #
@@ -29,7 +29,7 @@ This is how We broke down the problem statement to come up with this Amazing App
 * Use innerHTML to output the order to user for tracking.
 * Create a function that gives the total cost for just one pizza.
 * Calculate the delivery fee as part of total cost.
-* Add option for ni delivery.
+* Add option for no delivery.
 * Calculate total cost if user inputs two pizzas with different properties.
 * create a  loop to calculate as many pizza entries as user requires
 
